@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="picker"></div>
+
+    <script type="module">
+      import data from '@emoji-mart/data'
+      import * as EmojiMart from 'emoji-mart'
+
+      const elem = new EmojiMart.Picker({
+        parent: document.querySelector('#picker'),
+        onEmojiSelect: () => {
+          console.log('selected')
+        },
+        onReady: () => {
+          console.log('ready')
+        },
+      })
+    </script>
+  </body>
+</html>

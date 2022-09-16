@@ -7,7 +7,7 @@
   box-shadow: var(--shadow);
 
   --border-radius: 10px;
-  --category-icon-size: 18px;
+  --category-icon-size: 20px;
   --font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   --font-size: 15px;
 
@@ -474,4 +474,32 @@ button {
   .skin-tone-4 { background-color: #AA876B }
   .skin-tone-5 { background-color: #916544 }
   .skin-tone-6 { background-color: #61493F }
+}
+
+@media screen and (max-width: 600px) {
+  :host {
+    --border-radius: 0px;
+    --category-icon-size: 22px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  #root {
+    width: 100% !important;
+    height: 100%;
+  }
+  
+  .scroll > div {
+    width: 100% !important;
+  }
+  
+  .emoji-row {
+    justify-content: space-between;
+  }
+  .emoji-row:last-child {
+    justify-content: flex-start;
+  }
 }

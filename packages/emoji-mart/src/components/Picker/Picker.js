@@ -92,6 +92,8 @@ export default class Picker extends Component {
     this.shadowRoot = this.base.parentNode
     document.addEventListener('click', this.handleClickOutside)
 
+    this.props.onReady && this.props.onReady()
+
     if (this.props.autoFocus) {
       const { searchInput } = this.refs
       if (searchInput.current) {
@@ -757,7 +759,7 @@ export default class Picker extends Component {
           ) : (
             searchResults.map((row, i) => {
               return (
-                <div class="flex">
+                <div class="flex emoji-row">
                   {row.map((emoji, ii) => {
                     return this.renderEmojiButton(emoji, {
                       pos: [i, ii],
@@ -822,7 +824,7 @@ export default class Picker extends Component {
                       key={row.index}
                       data-index={row.index}
                       ref={ref}
-                      class="flex row"
+                      class="flex row emoji-row"
                       style={{ top: i * this.props.emojiButtonSize }}
                     >
                       {visible &&
@@ -968,7 +970,6 @@ export default class Picker extends Component {
         {this.props.searchPosition == 'sticky' && (
           <div class="padding-lr">{this.renderSearch()}</div>
         )}
-
         <div ref={this.refs.scroll} class="scroll flex-grow padding-lr">
           <div
             style={{
@@ -982,7 +983,6 @@ export default class Picker extends Component {
             <div class="spacer"></div>
           </div>
         </div>
-
         {this.props.navPosition == 'bottom' && this.renderNav()}
         {this.props.previewPosition == 'bottom' && this.renderPreview()}
         {this.state.showSkins && this.renderSkins()}
