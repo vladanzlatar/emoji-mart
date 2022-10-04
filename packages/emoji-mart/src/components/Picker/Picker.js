@@ -176,19 +176,12 @@ export default class Picker extends Component {
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         const id = entry.target.dataset.id
-        visibleCategories.set(id, entry.intersectionRatio)
+        visibleCategories.set(id, entry.isIntersecting)
       }
 
-      const ratios = [...visibleCategories]
-
-      const lastCategory = ratios[ratios.length - 1]
-      if (lastCategory[1] == 1) {
-        return setFocusedCategory(lastCategory[0])
-      }
-
-      for (const [id, ratio] of ratios) {
-        if (ratio) {
-          setFocusedCategory(id)
+      for (const [categoryId, isCategoryIntersecting] of visibleCategories) {
+        if (isCategoryIntersecting) {
+          setFocusedCategory(categoryId)
           break
         }
       }
@@ -469,7 +462,7 @@ export default class Picker extends Component {
     }
 
     this.ignoreMouse()
-    scroll.scrollTop = scrollTop
+    scroll.scrollTop = scrollTop + 1
   }
 
   ignoreMouse() {

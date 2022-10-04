@@ -11,7 +11,7 @@
 
     <script type="module">
       import data from '@emoji-mart/data'
-      import * as EmojiMart from 'emoji-mart'
+      import * as EmojiMart from '@wladan/emoji-mart'
 
       const elem = new EmojiMart.Picker({
         parent: document.querySelector('#picker'),
@@ -21,6 +21,35 @@
         onReady: () => {
           console.log('ready')
         },
+        customStyle: `
+          @media screen and (max-width: 600px) {
+            :host {
+              --border-radius: 0px;
+              --category-icon-size: 22px;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
+            
+            #root {
+              width: 100% !important;
+              height: 100%;
+            }
+            
+            .scroll > div {
+              width: 100% !important;
+            }
+            
+            .emoji-row {
+              justify-content: space-between;
+            }
+            .emoji-row:last-child {
+              justify-content: flex-start;
+            }
+          }
+        `,
       })
     </script>
   </body>
