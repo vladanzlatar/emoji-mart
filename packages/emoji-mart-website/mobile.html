@@ -8,20 +8,31 @@
   </head>
   <body>
     <div id="picker"></div>
+    <button id="btn">load emoji mart</button>
 
     <script type="module">
       import data from '@emoji-mart/data'
       import * as EmojiMart from '@wladan/emoji-mart'
 
-      const elem = new EmojiMart.Picker({
-        parent: document.querySelector('#picker'),
-        onEmojiSelect: () => {
-          console.log('selected')
-        },
-        onReady: () => {
-          console.log('ready')
-        },
-        customStyle: `
+      let cnt = 0
+
+      document.querySelector('#btn').addEventListener('click', () => {
+        cnt++
+        console.log('exec', cnt)
+        new EmojiMart.Picker({
+          parent: document.querySelector('#picker'),
+          onEmojiSelect: () => {
+            console.log('selected')
+          },
+          onReady: () => {
+            console.log('ready')
+          },
+          skinTonePosition: cnt === 2 ? 'search' : 'preview',
+          showRemoveBtn: cnt === 2 ? false : true,
+          onEmojiRemove: () => {
+            console.log('emoji remove')
+          },
+          customStyle: `
           @media screen and (max-width: 600px) {
             :host {
               --border-radius: 0px;
@@ -50,6 +61,7 @@
             }
           }
         `,
+        })
       })
     </script>
   </body>

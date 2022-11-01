@@ -609,7 +609,7 @@ export default class Picker extends Component {
             />
           </div>
 
-          <div class="margin-l">
+          <div class="margin-l flex-grow">
             {emoji ? (
               <div class="padding-r">
                 <div class="ellipsis" style={{ fontSize: '1.1em' }}>
@@ -629,8 +629,28 @@ export default class Picker extends Component {
                 </div>
               </div>
             ) : (
-              <div class="color-c" style={{ fontSize: 21 }}>
-                {I18n.pick}
+              <div
+                class="flex"
+                style={{
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+              >
+                <div class="color-c" style={{ fontSize: 18 }}>
+                  {I18n.pick}
+                </div>
+                {this.props.showRemoveBtn && (
+                  <button
+                    class={'remove-btn'}
+                    onClick={
+                      this.props.onEmojiRemove
+                        ? (e) => this.props.onEmojiRemove(e)
+                        : undefined
+                    }
+                  >
+                    Remove
+                  </button>
+                )}
               </div>
             )}
           </div>

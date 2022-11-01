@@ -475,3 +475,15 @@ button {
   .skin-tone-5 { background-color: #916544 }
   .skin-tone-6 { background-color: #61493F }
 }
+
+.remove-btn {
+  color: var(--color-b);
+  padding: 8px;
+  border-radius: 4px;
+  transition-duration: var(--duration);
+  transition-property: background-color;
+  transition-timing-function: var(--easing);
+  &:hover {
+    background-color: var(--em-color-border);
+  }
+}

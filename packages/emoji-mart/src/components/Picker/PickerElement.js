@@ -26,6 +26,8 @@ export default class PickerElement extends ShadowElement {
       getImageURL,
       getSpritesheetURL,
       onReady,
+      showRemoveBtn,
+      onEmojiRemove,
     } = this.props
 
     const props = {
@@ -37,6 +39,8 @@ export default class PickerElement extends ShadowElement {
       getImageURL,
       getSpritesheetURL,
       onReady,
+      showRemoveBtn,
+      onEmojiRemove,
     }
 
     render(<Picker {...props} />, this.shadowRoot)
